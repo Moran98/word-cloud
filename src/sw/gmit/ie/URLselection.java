@@ -4,11 +4,12 @@ import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 
-public class URLselection extends Menu {
-	
-	 public static void main(String [] args) {
-		 
-		 	//VARIABLES
+public class URLselection extends Cloud {
+
+		@Override
+		void fileURL() {
+			
+			//VARIABLES
 			Scanner s = new Scanner(System.in);
 			String urlName;
 		 
@@ -33,5 +34,26 @@ public class URLselection extends Menu {
 	         e.printStackTrace();
 	         System.out.println("Invalid URL input by the user.");
 	      }
+			
+		}
+
+		@Override
+		void enterNumWords() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		void enterImageName() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		void ExitProgram() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		 
 	 }
-}
