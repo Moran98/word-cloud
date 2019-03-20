@@ -1,5 +1,8 @@
 package sw.gmit.ie;
 
+import java.io.IOException;
+import java.net.*;
+import java.net.URL;
 import java.util.*;
 import java.util.Scanner;
 
@@ -25,7 +28,7 @@ public class Menu extends Cloud{
 		while (choice!=-1) {
 			
 			//Headers
-			System.out.println("Welcome to the Word Cloud Generator");
+			System.out.println("\nWelcome to the Word Cloud Generator");
 			System.out.println("===================================");
 			System.out.println(" 1) Select File URL.\n 2) Enter number of words.\n 3) Enter image name.\n-1) To Exit.");
 			System.out.println("Choose an option : ");
@@ -69,6 +72,33 @@ public class Menu extends Cloud{
 	void fileURL()
 	{
 		System.out.println("DEBUG FOR FILE URL");
+		
+
+		//VARIABLES
+		Scanner s = new Scanner(System.in);
+		String urlName;
+	 
+      try {
+    	 //PROMPT USER FOR URL INPUT
+    	 System.out.println("Please enter the URL name : ");
+    	 urlName = s.next();
+    	 
+    	 //Create URL object
+         URL url = new URL(urlName);
+         
+         System.out.println("URL is " + url.toString());
+         System.out.println("protocol is " + url.getProtocol());
+         System.out.println("authority is " + url.getAuthority());
+         System.out.println("file name is " + url.getFile());
+         System.out.println("host is " + url.getHost());
+         System.out.println("path is " + url.getPath());
+         System.out.println("port is " + url.getPort());
+         System.out.println("default port is " + url.getDefaultPort());
+         
+      } catch (IOException e) {
+         e.printStackTrace();
+         System.out.println("Invalid URL input by the user.");
+      }
 	}
 
 	@Override
