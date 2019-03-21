@@ -105,6 +105,7 @@ public class Menu extends Cloud{
 	@Override
 	void enterNumWords()
 	{
+		
 		int numWords=0;
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter the number of words :");
@@ -122,14 +123,8 @@ public class Menu extends Cloud{
 	{
 		
 		GenerateImage gen = new GenerateImage();
-		
-		//gen.GenerateImage();
-		String imgName="";
-		Scanner s = new Scanner(System.in);
-		
-		System.out.println("Please enter the image name : ");
-		imgName = s.next();
-		System.out.println("DEBUG : Image name is "+imgName);
+		gen.setName();
+	
 	}
 	
 	@Override

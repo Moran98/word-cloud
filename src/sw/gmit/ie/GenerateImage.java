@@ -4,13 +4,20 @@ import java.awt.*;
 import java.awt.image.*;
 import javax.imageio.*;
 import java.io.*;
+import java.util.Scanner;
 
 public class GenerateImage {
+	
+	Scanner s = new Scanner(System.in);
+	private static String fName="";
+
+	
 	public static void main(String args[]) throws IOException {
 		
 		//VARIABLES 
 		int width=600;
 		int height=300;
+		
 		
 		
 		Font font = new Font(Font.SANS_SERIF, Font.BOLD, 62);
@@ -33,8 +40,19 @@ public class GenerateImage {
 		graphics.drawString("Aaron Moran - G00356519", 70, 210);
 		graphics.dispose();
 		
+		
 		//Save File
 		//File file = new File("images.png");
-		ImageIO.write(img, "png", new File("test.png"));
+		//String name = fName;
+		ImageIO.write(img, "png", new File(fName+".png"));		
+		
 	}
+
+public void setName()
+{
+	System.out.println("Please enter the image file name : ");
+	fName = s.next();
+	System.out.println("The image name is : "+fName+".png");
+	
+}
 }

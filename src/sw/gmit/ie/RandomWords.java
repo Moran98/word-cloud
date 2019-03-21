@@ -35,7 +35,11 @@ public class RandomWords {
 	
 	public void ReadFile()
 	{
+		
 		while (x.hasNext()) {
+			
+			Random rn = new Random();
+			//int x = rn.nextInt(numWords);
 			
 			String a=x.next();
 			System.out.printf("%s\n" ,a);
