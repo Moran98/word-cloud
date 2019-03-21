@@ -8,17 +8,6 @@ For this project we had to create a visual representation of text using the user
 
 ## Getting Started
 
-
-## Built With
-
-*  [Eclipse](https://www.eclipse.org/) - The IDE used
-
-
-## Acknowledgments
-
-* Oracle.
-
-=======
 ## Built With
 *  [Eclipse](https://www.eclipse.org/) - The IDE used
 
