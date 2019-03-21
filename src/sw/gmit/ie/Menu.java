@@ -3,6 +3,7 @@ package sw.gmit.ie;
 import java.io.IOException;
 import java.net.*;
 import java.net.URL;
+import java.nio.file.ReadOnlyFileSystemException;
 import java.util.*;
 import java.util.Scanner;
 
@@ -108,11 +109,21 @@ public class Menu extends Cloud{
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter the number of words :");
 		numWords = s.nextInt();
+		
+		//READ FROM FILE THEN CLOSE WHEN DONE
+		RandomWords r = new RandomWords();
+		r.OpenFile();
+		r.ReadFile();
+		r.CloseFile();
 	}
 	
 	@Override
 	void enterImageName()
 	{
+		
+		GenerateImage gen = new GenerateImage();
+		
+		//gen.GenerateImage();
 		String imgName="";
 		Scanner s = new Scanner(System.in);
 		

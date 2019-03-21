@@ -35,6 +35,6 @@ public class GenerateImage {
 		
 		//Save File
 		//File file = new File("images.png");
-		ImageIO.write(img, "png", new File("image.png"));
+		ImageIO.write(img, "png", new File("test.png"));
 	}
 }
