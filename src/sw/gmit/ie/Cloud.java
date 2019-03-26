@@ -16,6 +16,8 @@ public abstract class Cloud {
 	// METHODS
 	abstract void fileURL();
 	
+	abstract void fileName();
+	
 	abstract void enterNumWords();
 	
 	abstract void enterImageName();

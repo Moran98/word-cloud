@@ -24,7 +24,7 @@ public class RandomWords {
 	{
 		try {
 			
-			x = new Scanner(new File ("dictionary.txt"));
+			x = new Scanner(new File ("DeBelloGallico.txt"));
 			
 		} catch (Exception e) {
 			// TODO: handle exception

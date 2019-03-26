@@ -6,26 +6,42 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Parser extends Menu {
 	
+	public static void main(String[] args) {
+		
+		ArrayList<String> text = new ArrayList<String>();
+		ArrayList<String> ignorewords = new ArrayList<String>();
+		
+
+	}
+
+	
 	public void parse(InputStream in) throws IOException
 	{
-		
+		//VARIABLES
+		int count=0;
+		int specCount=0;
 		String next = null;
 		BufferedReader br = null;
 		String url="";
 		Scanner s = new Scanner(System.in);
+		ArrayList<String> text = new ArrayList<String>();
+		ArrayList<String> ignorewords = new ArrayList<String>();
 		
-		 System.out.println("Please enter the URL name : ");
-		 url = s.nextLine();
-    	 InputStreamReader urlName = new InputStreamReader(System.in); 
+		//PROMPT USER FOR URL
+		System.out.println("Please enter the URL name : ");
+		// DEBUG URL TXT FILE ---- http://www.gutenberg.org/files/42571/42571-0.txt , http://www.gutenberg.org/files/22881/22881.txt
+		url = s.nextLine();
+    	InputStreamReader urlName = new InputStreamReader(System.in); 
 		
 		//URL PARSER
-		URL url2 = new URL (url);
+		URL u = new URL (url);
 		//p.parse(url.openStream());
-		InputStream stream = url2.openStream();
+		InputStream stream = u.openStream();
 		
 		try {
 			
@@ -35,10 +51,18 @@ public class Parser extends Menu {
 				System.out.println(next);
 				String[] words = next.split("");
 				for (String word : words) {
+					count++;
 					//IF - contains ignore words, update map
+					if(word.contains("ignorewords.txt"))
+					{
+						specCount++;
+					}
 					
 				}
 			}
+			System.out.println("The total word count is : "+count);
+			System.out.println("The specific word count is : "+specCount);
+
 			
 		} catch (IOException e) {
 			// TODO: handle exception

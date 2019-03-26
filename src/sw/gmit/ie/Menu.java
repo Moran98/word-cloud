@@ -34,7 +34,7 @@ public class Menu extends Cloud{
 			//Headers
 			System.out.println("\nWelcome to the Word Cloud Generator");
 			System.out.println("===================================");
-			System.out.println(" 1) Select File URL.\n 2) Enter number of words.\n 3) Enter image name.\n-1) To Exit.");
+			System.out.println(" 1) Select File URL.\n2) Enter File Directory\n 3) Enter number of words.\n 3) Enter image name.\n-1) To Exit.");
 			System.out.println("Choose an option : ");
 			choice = s.nextInt();
 			
@@ -49,7 +49,11 @@ public class Menu extends Cloud{
 				user.enterNumWords();
 				break;
 				
-			case 3: 
+			case 3:
+				user.enterNumWords();
+				break;
+				
+			case 4: 
 				user.enterImageName();
 				break;
 					
@@ -94,6 +98,11 @@ public class Menu extends Cloud{
          System.out.println("Invalid URL input by the user.");
       }
 	}
+	
+	@Override
+	void fileName() {
+		
+	}
 
 	@Override
 	void enterNumWords()
@@ -126,5 +135,6 @@ public class Menu extends Cloud{
 		System.out.println("Exiting program...");
 		System.exit(0);
 	}
+
 
 }
