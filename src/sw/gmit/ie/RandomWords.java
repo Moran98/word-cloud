@@ -49,8 +49,7 @@ public class RandomWords {
 	
 	public void CloseFile()
 	{
-		x.cl
-		ose();
+		x.close();
 	}
 	/*
 	public void load() throws Exception{ //If anything goes wrong, throw the exception to the calling method. Very lazy indeed!

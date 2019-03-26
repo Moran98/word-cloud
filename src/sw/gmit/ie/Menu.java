@@ -1,6 +1,9 @@
 package sw.gmit.ie;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.*;
 import java.net.URL;
 import java.nio.file.ReadOnlyFileSystemException;
@@ -72,29 +75,19 @@ public class Menu extends Cloud{
 	@Override
 	void fileURL()
 	{
-		System.out.println("DEBUG FOR FILE URL");
-		
-
 		//VARIABLES
 		Scanner s = new Scanner(System.in);
-		String urlName;
+		//InputStream urlName;
+		Parser p = new Parser();
+		
+		InputStream urlName = null;
 	 
       try {
     	 //PROMPT USER FOR URL INPUT
-    	 System.out.println("Please enter the URL name : ");
-    	 urlName = s.next();
-    	 
-    	 //Create URL object
-         URL url = new URL(urlName);
-         
-         System.out.println("URL is " + url.toString());
-         System.out.println("protocol is " + url.getProtocol());
-         System.out.println("authority is " + url.getAuthority());
-         System.out.println("file name is " + url.getFile());
-         System.out.println("host is " + url.getHost());
-         System.out.println("path is " + url.getPath());
-         System.out.println("port is " + url.getPort());
-         System.out.println("default port is " + url.getDefaultPort());
+    
+ 		 p.parse(urlName);
+ 	
+
          
       } catch (IOException e) {
          e.printStackTrace();
@@ -116,6 +109,7 @@ public class Menu extends Cloud{
 		r.OpenFile();
 		r.ReadFile();
 		r.CloseFile();
+	
 	}
 	
 	@Override
