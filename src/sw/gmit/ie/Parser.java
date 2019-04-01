@@ -11,13 +11,8 @@ import java.util.Scanner;
 
 public class Parser extends Menu {
 	
-	public static void main(String[] args) {
-		
-		ArrayList<String> text = new ArrayList<String>();
-		ArrayList<String> ignorewords = new ArrayList<String>();
-		
-
-	}
+	ArrayList<String> text = new ArrayList<String>();
+	ArrayList<String> ignorewords = new ArrayList<String>();
 
 	
 	public void parse(InputStream in) throws IOException
@@ -29,8 +24,6 @@ public class Parser extends Menu {
 		BufferedReader br = null;
 		String url="";
 		Scanner s = new Scanner(System.in);
-		ArrayList<String> text = new ArrayList<String>();
-		ArrayList<String> ignorewords = new ArrayList<String>();
 		
 		//PROMPT USER FOR URL
 		System.out.println("Please enter the URL name : ");
