@@ -23,12 +23,23 @@ public class Parser
               
              // read text returned by server
              BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+             String line = null;
               
-             String line;
+             
              while ((line = br.readLine()) != null) {
+            	 
+            	 String [] words = line.split(" ");
+            	 
+            	 for (String word : words) {
+					//if(!IgnoreWords.contains(word))
+					//{
+						//update
+					//}
+				}
                  System.out.println(line);
                  count++;
              }
+             //CLOSED BUFFERED READER
              br.close();
               
          }
