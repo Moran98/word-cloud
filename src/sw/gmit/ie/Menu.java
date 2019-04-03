@@ -15,7 +15,7 @@ public class Menu extends Cloud{
 	private Scanner s;
 	static boolean keepGoing=true;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		//Scanner 
 		Scanner s = new Scanner(System.in);
@@ -34,7 +34,7 @@ public class Menu extends Cloud{
 			//Headers
 			System.out.println("\nWelcome to the Word Cloud Generator");
 			System.out.println("===================================");
-			System.out.println(" 1) Select File URL.\n2) Enter File Directory\n 3) Enter number of words.\n 3) Enter image name.\n-1) To Exit.");
+			System.out.println(" 1) URL File.\n 2) Text FIle\n 3) Enter number of words.\n 4) Enter image name.\n-1) To Exit.");
 			System.out.println("Choose an option : ");
 			choice = s.nextInt();
 			
@@ -46,7 +46,7 @@ public class Menu extends Cloud{
 				break;
 				
 			case 2:
-				user.enterNumWords();
+				user.textFile();
 				break;
 				
 			case 3:
@@ -77,31 +77,26 @@ public class Menu extends Cloud{
 	
 	// METHODS
 	@Override
-	void fileURL()
+	void fileURL() throws IOException
 	{
 		//VARIABLES
 		Scanner s = new Scanner(System.in);
 		//InputStream urlName;
 		Parser p = new Parser();
 		
-		InputStream urlName = null;
-	 
-      try {
-    	 //PROMPT USER FOR URL INPUT
-    
- 		 p.parse(urlName);
- 	
-
-         
-      } catch (IOException e) {
-         e.printStackTrace();
-         System.out.println("Invalid URL input by the user.");
-      }
+		p.Parse();
 	}
 	
 	@Override
-	void fileName() {
+	void textFile() throws IOException
+	{
+		FileParser fp = new FileParser();
 		
+		fp.FileInput();
+	}
+	@Override
+	void fileName() {
+
 	}
 
 	@Override
@@ -109,23 +104,24 @@ public class Menu extends Cloud{
 	{
 		
 		int numWords=0;
+		String inputf;
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter the number of words :");
 		numWords = s.nextInt();
+		
 		
 		//READ FROM FILE THEN CLOSE WHEN DONE
 		RandomWords r = new RandomWords();
 		r.OpenFile();
 		r.ReadFile();
 		r.CloseFile();
-	
 	}
 	
 	@Override
 	void enterImageName()
 	{
 		
-		GenerateImage gen = new GenerateImage();
+GenerateImage gen = new GenerateImage();
 		gen.setName();
 	
 	}

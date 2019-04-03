@@ -1,5 +1,6 @@
 package sw.gmit.ie;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public abstract class Cloud {
@@ -14,7 +15,9 @@ public abstract class Cloud {
 
 	
 	// METHODS
-	abstract void fileURL();
+	abstract void fileURL() throws IOException;
+	
+	abstract void textFile() throws IOException;
 	
 	abstract void fileName();
 	

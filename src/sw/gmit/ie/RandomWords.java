@@ -10,7 +10,7 @@ import java.util.*;
 
 public class RandomWords {
 	
-	private List<Words> wordList = new ArrayList<Words>(); //Instance variable of type List (an interface)
+	//private List<Words> wordList = new ArrayList<Words>(); //Instance variable of type List (an interface)
 	private final static String DICTIONARY_FILE = "./dictionary.txt"; //A string instance variable
 	private Scanner x;
 	
