@@ -14,3 +14,6 @@ For this project we had to create a visual representation of text using the user
 ## Acknowledgments
 * Oracle.
 * Java 8 doc's.
+
+## Image IO Examples
+* Here i will display a couple of different outputs of the Word Clouds as i progressed throughout the project.
