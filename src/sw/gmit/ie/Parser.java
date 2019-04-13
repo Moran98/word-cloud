@@ -1,140 +1,54 @@
 package sw.gmit.ie;
-import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.HashSet;
-import java.util.Scanner; 
-  
-public class Parser 
-{ 
-    void Parse() throws IOException  
-    { 
-    	
-    	String urlName;
-    	int count=0;
-    	Scanner s = new Scanner(System.in);
-    	
-    	System.out.println("Enter the URL :" );
-    	urlName = s.nextLine();
-    	
-    	 try {
-             
-             URL url = new URL(urlName);
-              
-             // read text returned by server
-             BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-             String line = null;
-              
-             
-             while ((line = br.readLine()) != null) {
-            	 
-            	 String [] words = line.split(" ");
-            	 
-            	 for (String word : words) {
-					//if(!IgnoreWords.contains(word))
-					//{
-						//update
-					//}
-				}
-                 System.out.println(line);
-                 count++;
-             }
-             //CLOSED BUFFERED READER
-             br.close();
-              
-         }
-         catch (MalformedURLException e) {
-             System.out.println("Invalid URL");
-         }
-    	 
-		  System.out.println("\n\n DEBUG  -- The count of words is : "+count);
 
-    } 
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*package sw.gmit.ie;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Scanner;
+import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 
-public class Parser extends Menu {
+
+public class Parser extends IgnoreWords{	
+	private HashMap<String, Integer> list = new HashMap<String, Integer>();
 	
-	ArrayList<String> text = new ArrayList<String>();
-	ArrayList<String> ignorewords = new ArrayList<String>();
-
-	   public static void main(String[] args) throws IOException  
-	    { 
-	        // PrintWriter object for output.txt 
-	        PrintWriter pw = new PrintWriter("output.txt"); 
-	          
-	        // BufferedReader object for delete.txt 
-	        BufferedReader br2 = new BufferedReader(new FileReader("ignorewords.txt")); 
-	          
-	        String line2 = br2.readLine(); 
-	          
-	        // hashset for storing lines of delete.txt 
-	        HashSet<String> hs = new HashSet<String>(); 
-	          
-	        // loop for each line of delete.txt 
-	        while(line2 != null) 
-	        { 
-	            hs.add(line2); 
-	            line2 = br2.readLine(); 
-	        } 
-	                      
-	        // BufferedReader object for input.txt 
-	        BufferedReader br1 = new BufferedReader(new FileReader("DeBelloGallico.txt")); 
-	          
-	        String line1 = br1.readLine(); 
-	          
-	        // loop for each line of input.txt 
-	        while(line1 != null) 
-	        { 
-	            // if line is not present in delete.txt 
-	            // write it to output.txt 
-	            if(!hs.contains(line1)) 
-	                pw.println(line1); 
-	              
-	            line1 = br1.readLine(); 
-	        } 
-	          
-	        pw.flush(); 
-	          
-	        // closing resources 
-	        br1.close(); 
-	        br2.close(); 
-	        pw.close(); 
-	          
-	        System.out.println("File operation performed successfully"); 
-	    } 
+	public Parser(String file) throws Exception {
+		super();
+		readFile(file);
+	}
+	
+	public HashMap<String, java.lang.Integer> readFile(String file) throws Exception{
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+		StringBuffer sb = new StringBuffer();
+		
+		int j;
+		while((j = br.read()) != -1) {
+			char next = (char)j;		
+			if (next >= 'A' && next <= 'z' || next == '\''){
+				sb.append(next);
+			}
+			else {
+				String word = sb.toString().toLowerCase();
+				sb = new StringBuffer();
+				
+				// This will add words and how often they occur to the hashMap, which can then be called by other classes
+				if(!compare(word) && word.length() > 0){
+					int freq = 0;	
+					if(list.containsKey(word)){
+						freq = list.get(word);				
+					}
+					freq++;
+					list.put(word, freq);
+				}
+			}
+		}	
+		br.close();
+		setWordHash(list);
+		return list;
+	}
+	
+	public HashMap<String, Integer> getWordHash() {
+		return list;
+	}
+	
+	private void setWordHash(HashMap<String, Integer> wordHash) {
+		this.list = wordHash;
+	}
 }
-
-*/

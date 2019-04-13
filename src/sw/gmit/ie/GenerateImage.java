@@ -1,58 +1,102 @@
 package sw.gmit.ie;
 
 import java.awt.*;
-import java.awt.image.*;
-import javax.imageio.*;
+import java.awt.image.*; 
+import javax.imageio.*; 
 import java.io.*;
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Random; 
 
-public class GenerateImage {
+public class GenerateImage implements Interface{  
 	
-	Scanner s = new Scanner(System.in);
-	private static String fName="";
-
+	private Parser p; // This will allow us to get the wordHash with all of our filtered words.
+	private Graphics graphics;
+	private Color c;
+	//SETTING HEIGHT AND WIDTH TO FINAL WILL RESTRICT THEIR SIZES
+	private int HEIGHT = 0;
+	private int WIDTH = 0;
+	private BufferedImage img;
+	//Random colours to make design nicer
+	private final Random rand = new Random();
 	
-	public static void main(String args[]) throws IOException {
+	public GenerateImage(String inFile, String outFile, Integer nWords) throws Exception {
+		super();
+		p = new Parser(inFile);
+		wordCloud(outFile, nWords);
+	}
+	
+	public void wordCloud(String outFile, Integer nWords) throws Exception{
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map = p.getWordHash();		
 		
-		//VARIABLES 
-		int width=600;
-		int height=300;
+		//
+		//
+		//1920x1080 sets out resolution for the image output giving us a clear broad image
+		img = new BufferedImage(1920, 1080, BufferedImage.TYPE_4BYTE_ABGR);
+		graphics = img.getGraphics();
 		
+		//Setting default background to WHITE
+		graphics.setColor(Color.white);
+		graphics.fillRect(0, 0, 1920, 1080);
 		
+		for (int i = 0; i < nWords; i++) {
+			
+			/*
+			 * Noticing the larger the number entered for nWords ,
+			 * The longer the program completes to compile.
+			 * example of 10 words takes N amount of time
+			 * and 100 words takes N amount of time. Very slow.
+			 * 
+			 */
+			int x = 0, y=20, j=0, count=0;
+			for (String word : map.keySet()) {
+				if (map.get(word) > 1 && j < map.size()) {
+					//int fontWidth = drawWord(word, map.get(word),y, x);
+					int fontHeight = drawWord(word, map.get(word),WIDTH, HEIGHT);
+					HEIGHT+=fontHeight;
+					//x+=fontWidth;
+				
+					// words are then moved on the x coordinate and the counter resets
+					count++;
+					if(count >= nWords){
+						WIDTH+=25;
+						HEIGHT=10;
+						count = 0;
+					}
+				}
+			}
+			ImageIO.write(img, "png", new File(outFile));
+			
+		}
 		
-		Font font = new Font(Font.SANS_SERIF, Font.BOLD, 62);
-		BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		Graphics graphics = img.getGraphics();
-		graphics.setColor(Color.red);
-		graphics.setFont(font);
-		//graphics.fillRect(0, 0, width, height);
-		
-		graphics.drawString("Data Structures", 0, 100);
-		font = new Font(Font.SANS_SERIF, Font.ITALIC, 42);
-		graphics.setFont(font);
-		graphics.setColor(Color.yellow);
-		graphics.drawString("and Algorithms", 10, 150);
-		font = new Font(Font.MONOSPACED, Font.PLAIN, 22);
-		graphics.setFont(font);
-		graphics.setColor(Color.blue);
-		graphics.drawString("2019Assignment", 40, 180);
-		graphics.setColor(Color.green);
-		graphics.drawString("Aaron Moran - G00356519", 70, 210);
-		graphics.dispose();
-		
-		
-		//Save File
-		//File file = new File("images.png");
-		//String name = fName;
-		ImageIO.write(img, "png", new File(fName+".png"));		
 		
 	}
-
-public void setName()
-{
-	System.out.println("Please enter the image file name : ");
-	fName = s.next();
-	System.out.println("The image name is : "+fName+".png");
 	
-}
+	public int drawWord(String word, int wordFreq, int x, int y) {
+		int fontSize = (int)(Math.log(wordFreq)*20);	
+		Font font = new Font(Font.DIALOG_INPUT, Font.PLAIN, fontSize);
+		c = randColour();
+		graphics.setColor(c);
+		graphics.setFont(font);
+		
+		// Spacing between words
+		FontMetrics fm = graphics.getFontMetrics(font);
+		int height = fm.getHeight();
+		graphics.drawString(word + "", x, y + fm.getAscent());
+		return height;
+	}
+	
+	/*
+	 * Generates random numbers, which is then feed into the colour generator.
+	 * Rand numbers are limited, so that it only will result in lighter colours, making them easy to see on the dark background
+	 */
+	public Color randColour() {
+		float r = (float) (rand.nextFloat() / 2f + 0.5);
+		float g = (float) (rand.nextFloat() / 2f + 0.5);
+		float b = (float) (rand.nextFloat() / 2f + 0.5);
+		
+		Color colour = new Color(r, g, b);
+		return colour;
+	}
+
 }

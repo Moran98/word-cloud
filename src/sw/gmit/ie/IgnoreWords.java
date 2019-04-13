@@ -1,78 +1,42 @@
 package sw.gmit.ie;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class IgnoreWords {
-	
-	public static HashSet<String> listWords;
-	public static Map<String, Integer> freq;
-	
-	
-	static {
-		
-		listWords = new HashSet<>();
-		listWords.add("ignorewords.txt");
-		freq=new HashMap<>();
+	private static ArrayList<String> ignorewords = new ArrayList<String>();
+
+	public IgnoreWords() throws Exception {
+		super();
+		parse("./ignorewords.txt"); // File is hardcoded, as this is the only file that is going to be used for the stopwords.
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		BufferedReader reader = null;
-		String line;
-		
-		try {
-			
-			reader = new BufferedReader(new FileReader("DeBelloGallico.txt"));
-			
-			while ((line = reader.readLine())!=null) {
-				String [] words = line.split(" ");		
-				
-				
-				for (String word : words) {
-					
-					if(listWords.contains(word))
-					{
-						continue;
-					}
-					
-					Integer value = freq.get(word);
-					
-					if(value != null)
-					{
-						freq.put(word, value+1);
-					}
-					
-					else
-					{
-						freq.put(word, 0);
-					}
-					
-					System.out.println(word);
-
-				}
-			}
-			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}	
-		
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}	
-		//finally
-		//{
-			//reader.close();
-		//}
-		
-		System.out.println(freq.values());
+	public void parse(String FileName) throws Exception {
+ 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(FileName)));
+ 		StringBuffer sb = new StringBuffer();
+ 		
+ 		int i;
+ 		while((i = br.read()) != -1){
+ 			char next = (char) i;
+ 			
+ 			if(next != '\n')
+ 				sb.append(next);
+ 			
+ 			else{
+ 				String stopWord = sb.toString().toLowerCase();
+ 				sb = new StringBuffer();
+ 				ignorewords.add(stopWord);
+ 			}
+ 		}
+ 		br.close();
 	}
-
+	
+	public boolean compare(String word){
+		if(ignorewords.contains(word))
+			return true;	
+		else
+			return false;
+	}
 }
