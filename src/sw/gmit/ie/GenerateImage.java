@@ -59,8 +59,8 @@ public class GenerateImage implements Interface{
 					// words are then moved on the x coordinate and the counter resets
 					count++;
 					if(count >= nWords){
-						WIDTH+=25;
-						HEIGHT=10;
+						WIDTH+=250;
+						HEIGHT=100;
 						count = 0;
 					}
 				}
