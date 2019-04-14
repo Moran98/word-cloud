@@ -10,10 +10,15 @@ public class IgnoreWords {
 
 	public IgnoreWords() throws Exception {
 		super();
-		parse("./ignorewords.txt"); // File is hardcoded, as this is the only file that is going to be used for the stopwords.
+		parse("./ignorewords.txt"); // "ignorewords.txt" has been placed into the JRE library as the user does not enter in this file.
 	}
 	
 	public void parse(String FileName) throws Exception {
+		
+		/*
+		 * Using a BufferedReader to stream in the text from the files,
+		 * Courtesy of labratory examples.
+		 */
  		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(FileName)));
  		StringBuffer sb = new StringBuffer();
  		
@@ -25,18 +30,19 @@ public class IgnoreWords {
  				sb.append(next);
  			
  			else{
- 				String stopWord = sb.toString().toLowerCase();
+ 				String ignore = sb.toString().toLowerCase();
  				sb = new StringBuffer();
- 				ignorewords.add(stopWord);
+ 				ignorewords.add(ignore);
  			}
  		}
  		br.close();
 	}
 	
-	public boolean compare(String word){
+	public boolean split(String word){
 		if(ignorewords.contains(word))
 			return true;	
-		else
+		else {
 			return false;
+		}
 	}
 }

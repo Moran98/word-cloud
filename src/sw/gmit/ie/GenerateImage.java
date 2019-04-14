@@ -7,11 +7,11 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Random; 
 
-public class GenerateImage implements Interface{  
+public class GenerateImage{  
 	
 	private Parser p; // This will allow us to get the wordHash with all of our filtered words.
 	private Graphics graphics;
-	private Color c;
+	private Color allColors;
 	//SETTING HEIGHT AND WIDTH TO FINAL WILL RESTRICT THEIR SIZES
 	private int HEIGHT = 0;
 	private int WIDTH = 0;
@@ -22,12 +22,12 @@ public class GenerateImage implements Interface{
 	public GenerateImage(String inFile, String outFile, Integer nWords) throws Exception {
 		super();
 		p = new Parser(inFile);
-		wordCloud(outFile, nWords);
+		Cloud(outFile, nWords);
 	}
 	
-	public void wordCloud(String outFile, Integer nWords) throws Exception{
+	public void Cloud(String outFile, Integer nWords) throws Exception{
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		map = p.getWordHash();		
+		map = p.getList();		
 		
 		//
 		//
@@ -36,7 +36,7 @@ public class GenerateImage implements Interface{
 		graphics = img.getGraphics();
 		
 		//Setting default background to WHITE
-		graphics.setColor(Color.white);
+		graphics.setColor(Color.black);
 		graphics.fillRect(0, 0, 1920, 1080);
 		
 		for (int i = 0; i < nWords; i++) {
@@ -48,7 +48,8 @@ public class GenerateImage implements Interface{
 			 * and 100 words takes N amount of time. Very slow.
 			 * 
 			 */
-			int x = 0, y=20, j=0, count=0;
+			int j=0;
+			int count=0;
 			for (String word : map.keySet()) {
 				if (map.get(word) > 1 && j < map.size()) {
 					//int fontWidth = drawWord(word, map.get(word),y, x);
@@ -56,7 +57,7 @@ public class GenerateImage implements Interface{
 					HEIGHT+=fontHeight;
 					//x+=fontWidth;
 				
-					// words are then moved on the x coordinate and the counter resets
+					// words are then moved on the WIDTH(x) coordinate and the counter resets
 					count++;
 					if(count >= nWords){
 						WIDTH+=250;
@@ -74,9 +75,9 @@ public class GenerateImage implements Interface{
 	
 	public int drawWord(String word, int wordFreq, int x, int y) {
 		int fontSize = (int)(Math.log(wordFreq)*20);	
-		Font font = new Font(Font.DIALOG_INPUT, Font.PLAIN, fontSize);
-		c = randColour();
-		graphics.setColor(c);
+		Font font = new Font(Font.DIALOG_INPUT, Font.ROMAN_BASELINE, fontSize);
+		allColors = randColour();
+		graphics.setColor(allColors);
 		graphics.setFont(font);
 		
 		// Spacing between words
