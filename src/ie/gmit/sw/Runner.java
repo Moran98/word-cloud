@@ -1,4 +1,4 @@
-package sw.gmit.ie;
+package ie.gmit.sw;
 
 import java.io.File;
 import java.net.URL;
@@ -32,6 +32,7 @@ public class Runner {
 				
 				//Parser object to pass the input of sFile to be passed through the Parser, it is then used as a paramater in creating the image.
 				Parser p = new Parser(sFile);
+				p.parse(sFile);
 				//SETTING THE FILE NAME 
 				System.out.println("Enter the Image name :");
 				fname = s.next();

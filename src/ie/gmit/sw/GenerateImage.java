@@ -1,4 +1,4 @@
-package sw.gmit.ie;
+package ie.gmit.sw;
 
 import java.awt.*;
 import java.awt.image.*; 
@@ -74,8 +74,12 @@ public class GenerateImage{
 	}
 	
 	public int drawWord(String word, int wordFreq, int x, int y) {
-		int fontSize = (int)(Math.log(wordFreq)*20);	
-		Font font = new Font(Font.DIALOG_INPUT, Font.ROMAN_BASELINE, fontSize);
+		
+		int fontSize = (int)(Math.log(wordFreq)*30);	
+	//	int fontSize = (int)(Math.log(wordFreq)*20);	
+	//	int fontSize = (int)(Math.log(wordFreq)*40);	
+
+		Font font = new Font(Font.MONOSPACED, Font.ROMAN_BASELINE, fontSize);
 		allColors = randColour();
 		graphics.setColor(allColors);
 		graphics.setFont(font);
@@ -91,13 +95,18 @@ public class GenerateImage{
 	 * Generates random numbers, which is then feed into the colour generator.
 	 * Rand numbers are limited, so that it only will result in lighter colours, making them easy to see on the dark background
 	 */
+
 	public Color randColour() {
-		float r = (float) (rand.nextFloat() / 2f + 0.5);
-		float g = (float) (rand.nextFloat() / 2f + 0.5);
-		float b = (float) (rand.nextFloat() / 2f + 0.5);
 		
-		Color colour = new Color(r, g, b);
+	
+		float red = (float) (rand.nextFloat() / 4f + 0.5);
+		float green = (float) (rand.nextFloat() / 4f + 0.5);
+		float blue = (float) (rand.nextFloat() / 4f + 0.5);
+
+		
+		Color colour = new Color(red, green, blue);
 		return colour;
-	}
+		}
+	
 
 }

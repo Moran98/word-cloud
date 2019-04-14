@@ -1,4 +1,4 @@
-package sw.gmit.ie;
+package ie.gmit.sw;
 
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -12,6 +12,7 @@ public class Parser extends IgnoreWords{
 	Scanner s = new Scanner(System.in);
 	
 	public Parser(String file) throws Exception {
+		//Calling super() which allows us to access Super class members, e.g Split()
 		super();
 		stream(file);
 	}
@@ -20,6 +21,7 @@ public class Parser extends IgnoreWords{
 		
 		/*
 		 * Using a BufferedReader to stream in the text from the files,
+		 * StringBuffer allows us to append/add each string value to the HashMap.
 		 * Courtesy of labratory examples.
 		 */
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
@@ -37,17 +39,25 @@ public class Parser extends IgnoreWords{
 				String word = sb.toString().toLowerCase();
 				sb = new StringBuffer();
 				
-				// This will add words and how often they occur to the hashMap, which can then be called by other classes
+				/*
+				 * As specified in the brief here is the required Frequency table,
+				 * String is passed in and the increment of Frequency counts its occurences.
+				 * (word, frequency) 
+				 * word : displays the string
+				 * frequency : (Integer)
+				 */
 				if(!split(word) && word.length() > 0){
 					int frequency = 0;	
 					if(list.containsKey(word)){
 						frequency = list.get(word);				
 					}
 					frequency++;
+					//Passign the (key, value)
 					list.put(word, frequency);
 				}
 			}
 		}	
+		//Good practice.
 		br.close();
 		setList(list);
 		return list;

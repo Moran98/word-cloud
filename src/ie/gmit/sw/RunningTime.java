@@ -1,4 +1,4 @@
-package sw.gmit.ie;
+package ie.gmit.sw;
 
 public class RunningTime {
 	public static void main(String[] args) throws Exception{
