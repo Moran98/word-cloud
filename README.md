@@ -18,7 +18,9 @@ For this project we had to create a visual representation of text using the user
 ## Image IO Examples
 * Here i will display a couple of different outputs of the Word Clouds as i progressed throughout the project.
 
+* This screenshot was one of the first outputs of a Word Cloud i produced. 
 ![Screenshot](example.png)
 * Second screenshot with a few tweaks.
-
 ![Screenshot](test2.png)
+* More tests.
+![Screenshot](TEST13.png)
