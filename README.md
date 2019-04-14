@@ -24,4 +24,4 @@ For this project we had to create a visual representation of text using the user
 * Second screenshot with a few tweaks.
 ![Screenshot](test2.png)
 * More tests.
-![Screenshot](TEST13.png)
+![Screenshot](TEST500.png)
