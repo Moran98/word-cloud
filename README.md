@@ -19,3 +19,6 @@ For this project we had to create a visual representation of text using the user
 * Here i will display a couple of different outputs of the Word Clouds as i progressed throughout the project.
 
 ![Screenshot](example.png)
+* Second screenshot with a few tweaks.
+
+![Screenshot](test2.png)
