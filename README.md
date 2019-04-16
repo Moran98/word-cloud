@@ -15,6 +15,7 @@ For this project we had to create a visual representation of text using the user
 * Oracle.
 * Java 8 doc's.
 * Data Structures and Algorithms Lab Classes.
+* StackOverflow.
 
 ## Image IO Examples
 * Here i will display a couple of different outputs of the Word Clouds as i progressed throughout the project.
