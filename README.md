@@ -22,7 +22,8 @@ java –cp ./wordcloud.jar ie.gmit.sw.Runner
 ```
 
 
-## Methods/Code
+## Parser
+For my File/URL Parser i used a HashMap<String, Integer> , This allowed me to implement the Frequency table later in the method which was a requirement in the brief of the project. The method would stream in the text file directory that had been entered and read through each String variable in the file and append it to the StringBuffer.
 
 
 ## Image IO Examples
