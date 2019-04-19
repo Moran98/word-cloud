@@ -5,9 +5,6 @@ This is my submission for Data Structures and Algorithms project "Word Cloud".
 
 For this project we had to create a visual representation of text using the users input of a URL or Text File Directory and the limit of words they would like to have displayed. The visual representation should also not include the ignored specified words which were taken from a file that is hardcoded into the program. The user must also be given the option to decide the name of the output file. 
 
-
-## Getting Started
-
 ## Built With
 *  [Eclipse](https://www.eclipse.org/) - The IDE used
 
@@ -23,4 +20,4 @@ For this project we had to create a visual representation of text using the user
 * This screenshot was one of the first outputs of a Word Cloud i produced. 
 ![Screenshot](example.png)
 * Second screenshot with a few tweaks.
-![Screenshot](TEST500.png)
+![Screenshot](GitExample.png)
