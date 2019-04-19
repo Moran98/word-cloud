@@ -15,7 +15,7 @@ public class Parser extends IgnoreWords{
 	
 	public Parser(String file) throws Exception {
 		//Calling super() which allows us to access Super class members, e.g Split()
-		super();
+		//super();
 		stream(file);
 	}
 	
