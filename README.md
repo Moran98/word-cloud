@@ -14,6 +14,18 @@ For this project we had to create a visual representation of text using the user
 * Data Structures and Algorithms Lab Classes.
 * StackOverflow when facing issues.
 
+## Running the Jar File
+The JAR file has been created in the BIN location of the project. 
+To run the JAR file on CMD/XTerm use the following commands :
+```
+java –cp ./wordcloud.jar ie.gmit.sw.Runner
+```
+
+
+## Parser
+For my File/URL Parser i used a HashMap<String, Integer> , This allowed me to implement the Frequency table later in the method which was a requirement in the brief of the project. The method would stream in the text file directory that had been entered and read through each String variable in the file and append it to the StringBuffer.
+
+
 ## Image IO Examples
 * Here i will display a couple of different outputs of the Word Clouds as i progressed throughout the project.
 
