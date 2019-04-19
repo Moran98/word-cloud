@@ -20,7 +20,7 @@ private HashMap<String, Integer> list = new HashMap<String, Integer>();
 		
 		/*
 		 * Using a BufferedReader to stream in the text from the files,
-		 * Courtesy of labratory examples.
+		 * Courtesy of laboratory examples.
 		 */
 		
 		try {
@@ -65,10 +65,6 @@ private HashMap<String, Integer> list = new HashMap<String, Integer>();
 		return list;		
 		
 		
-	}
-
-	public HashMap<String, Integer> getList() {
-		return list;
 	}
 	
 	private void setMap(HashMap<String, Integer> wordList) {

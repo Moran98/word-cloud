@@ -16,8 +16,9 @@ public class GenerateImage{
 	private int HEIGHT = 0;
 	private int WIDTH = 0;
 	private BufferedImage img;
+	private float red, blue, green;
 	//Random colours to make design nicer
-	private final Random rand = new Random();
+	private Random rand = new Random();
 	
 	public GenerateImage(String inFile, String outFile, Integer nWords) throws Exception {
 		super();
@@ -38,8 +39,11 @@ public class GenerateImage{
 		//Setting default background to WHITE
 		graphics.setColor(Color.black);
 		graphics.fillRect(0, 0, 1440, 960);
-		
+				
 		for (int i = 0; i < nWords; i++) {
+			
+			int j=0;
+			int count=0;
 			
 			/*
 			 * Noticing the larger the number entered for nWords ,
@@ -48,20 +52,20 @@ public class GenerateImage{
 			 * and 100 words takes N amount of time. Very slow.
 			 * 
 			 */
-			int j=0;
-			int count=0;
-			for (String word : map.keySet()) {
-				if (map.get(word) > 1 && j < map.size()) {
-					//int fontWidth = drawWord(word, map.get(word),y, x);
+	
+			for (String word : map.keySet())
+			{
+				if (map.get(word) > 1 && j < map.size())
+				{
+					
 					int fontHeight = drawWord(word, map.get(word),WIDTH, HEIGHT);
 					HEIGHT+=fontHeight;
-					//x+=fontWidth;
-				
+									
 					// words are then moved on the WIDTH(x) coordinate and the counter resets
 					count++;
 					if(count >= nWords){
-						WIDTH+=250;
-						HEIGHT=100;
+						WIDTH+=400;
+						HEIGHT=0;
 						count = 0;
 					}
 				}
@@ -73,14 +77,28 @@ public class GenerateImage{
 		
 	}
 	
+	public Color random()
+	{
+		
+		/*
+		 * Generates random numbers, which is then feed into the colour generator.
+		 * Rand numbers are limited, so that it only will result in lighter colours, making them easy to see on the dark background
+		 */
+
+		float red = (float) (rand.nextFloat() / 2f + 0.5);
+		float green = (float) (rand.nextFloat() / 2f + 0.5);
+		float blue = (float) (rand.nextFloat() / 2f + 0.5);
+		Color colour = new Color(red, green, blue);
+		
+		return colour;
+	}
+	
 	public int drawWord(String word, int wordFreq, int x, int y) {
 		
-		int fontSize = (int)(Math.log(wordFreq)*30);	
-	//	int fontSize = (int)(Math.log(wordFreq)*20);	
-	//	int fontSize = (int)(Math.log(wordFreq)*40);	
+		int fontSize = (int)(Math.log(wordFreq)*35);	
 
 		Font font = new Font(Font.MONOSPACED, Font.ROMAN_BASELINE, fontSize);
-		allColors = randColour();
+		allColors = random();
 		graphics.setColor(allColors);
 		graphics.setFont(font);
 		
@@ -91,22 +109,7 @@ public class GenerateImage{
 		return height;
 	}
 	
-	/*
-	 * Generates random numbers, which is then feed into the colour generator.
-	 * Rand numbers are limited, so that it only will result in lighter colours, making them easy to see on the dark background
-	 */
 
-	public Color randColour() {
-		
-	
-		float red = (float) (rand.nextFloat() / 2f + 0.5);
-		float green = (float) (rand.nextFloat() / 2f + 0.5);
-		float blue = (float) (rand.nextFloat() / 2f + 0.5);
-
-		
-		Color colour = new Color(red, green, blue);
-		return colour;
-		}
 	
 
 }
