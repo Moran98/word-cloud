@@ -42,7 +42,7 @@ public class Parser extends IgnoreWords{
 				sBuff.append(text);
 			}
 			else {
-				String word = sBuff.toString().toLowerCase();
+				String word = sBuff.toString().toUpperCase();
 				sBuff = new StringBuffer();
 				
 				/*

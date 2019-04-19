@@ -31,7 +31,7 @@ public class IgnoreWords {
  				sb.append(next);
  			
  			else{
- 				String ignore = sb.toString().toLowerCase();
+ 				String ignore = sb.toString().toUpperCase();
  				sb = new StringBuffer();
  				ignorewords.add(ignore);
  			}

@@ -33,12 +33,12 @@ public class GenerateImage{
 		//
 		//
 		//1920x1080 sets out resolution for the image output giving us a clear broad image
-		img = new BufferedImage(1440, 960, BufferedImage.TYPE_4BYTE_ABGR);
+		img = new BufferedImage(1600, 1024, BufferedImage.TYPE_4BYTE_ABGR);
 		graphics = img.getGraphics();
 		
 		//Setting default background to WHITE
 		graphics.setColor(Color.black);
-		graphics.fillRect(0, 0, 1440, 960);
+		graphics.fillRect(0, 0, 1600, 1024);
 				
 		for (int i = 0; i < nWords; i++) {
 			
@@ -64,7 +64,7 @@ public class GenerateImage{
 					// words are then moved on the WIDTH(x) coordinate and the counter resets
 					count++;
 					if(count >= nWords){
-						WIDTH+=400;
+						WIDTH+=250;
 						HEIGHT=0;
 						count = 0;
 					}
