@@ -21,9 +21,20 @@ To run the JAR file on CMD/XTerm use the following commands :
 java –cp ./wordcloud.jar ie.gmit.sw.Runner
 ```
 
+## Runner
+For the Runner file i just created a basic UI with a Menu allowing the user to choose between a File or URL or -1) To exit.
+Whichever file type selection they chose would then direct them towards deciding how many words to display and the name they would like to name the image output file.
 
 ## Parser
 For my File/URL Parser i used a HashMap<String, Integer> , This allowed me to implement the Frequency table later in the method which was a requirement in the brief of the project. The method would stream in the text file directory that had been entered and read through each String variable in the file and append it to the StringBuffer.
+
+## Generate Image
+
+## Ignore Words
+This file contained the hard coded file of "ignorewords.txt" which would remove any containing words in the file entered by the user. 
+Similar to the Parser it would add and compare String values to the String Buffer. Both the File and URL parser classes extended the IgnoreWords file.
+
+
 
 
 ## Image IO Examples
@@ -31,5 +42,4 @@ For my File/URL Parser i used a HashMap<String, Integer> , This allowed me to im
 
 * This screenshot was one of the first outputs of a Word Cloud i produced. 
 ![Screenshot](example.png)
-* Second screenshot with a few tweaks.
-![Screenshot](GitExample.png)
+![Screenshot](EXAMPLE.png)
