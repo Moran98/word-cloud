@@ -23,6 +23,4 @@ For this project we had to create a visual representation of text using the user
 * This screenshot was one of the first outputs of a Word Cloud i produced. 
 ![Screenshot](example.png)
 * Second screenshot with a few tweaks.
-![Screenshot](test2.png)
-* More tests.
 ![Screenshot](TEST500.png)
