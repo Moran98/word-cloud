@@ -35,6 +35,5 @@ For my File/URL Parser i used a HashMap<String, Integer> , This allowed me to im
 * Here i will display a couple of different outputs of the Word Clouds as i progressed throughout the project.
 
 * This screenshot was one of the first outputs of a Word Cloud i produced. 
-![Screenshot](example.png)
-* Second screenshot with a few tweaks.
+![Screenshot](Github.png)
 ![Screenshot](EXAMPLE.png)
