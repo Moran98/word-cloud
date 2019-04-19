@@ -6,14 +6,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class IgnoreWords {
+	
 	private static ArrayList<String> ignorewords = new ArrayList<String>();
 
 	public IgnoreWords() throws Exception {
-		super();
-		parse("./ignorewords.txt"); // "ignorewords.txt" has been placed into the JRE library as the user does not enter in this file.
+		ignore("./ignorewords.txt"); // "ignorewords.txt" has been placed into the JRE library as the user does not enter in this file.
 	}
 	
-	public void parse(String FileName) throws Exception {
+	public void ignore(String FileName) throws Exception {
 		
 		/*
 		 * Using a BufferedReader to stream in the text from the files,
@@ -23,7 +23,8 @@ public class IgnoreWords {
  		StringBuffer sb = new StringBuffer();
  		
  		int i;
- 		while((i = br.read()) != -1){
+ 		while((i = br.read()) != -1)
+ 		{
  			char next = (char) i;
  			
  			if(next != '\n')

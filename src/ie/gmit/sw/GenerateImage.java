@@ -32,12 +32,12 @@ public class GenerateImage{
 		//
 		//
 		//1920x1080 sets out resolution for the image output giving us a clear broad image
-		img = new BufferedImage(1920, 1080, BufferedImage.TYPE_4BYTE_ABGR);
+		img = new BufferedImage(1440, 960, BufferedImage.TYPE_4BYTE_ABGR);
 		graphics = img.getGraphics();
 		
 		//Setting default background to WHITE
 		graphics.setColor(Color.black);
-		graphics.fillRect(0, 0, 1920, 1080);
+		graphics.fillRect(0, 0, 1440, 960);
 		
 		for (int i = 0; i < nWords; i++) {
 			
@@ -99,9 +99,9 @@ public class GenerateImage{
 	public Color randColour() {
 		
 	
-		float red = (float) (rand.nextFloat() / 4f + 0.5);
-		float green = (float) (rand.nextFloat() / 4f + 0.5);
-		float blue = (float) (rand.nextFloat() / 4f + 0.5);
+		float red = (float) (rand.nextFloat() / 2f + 0.5);
+		float green = (float) (rand.nextFloat() / 2f + 0.5);
+		float blue = (float) (rand.nextFloat() / 2f + 0.5);
 
 		
 		Color colour = new Color(red, green, blue);

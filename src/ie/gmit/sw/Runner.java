@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class Runner {
 	public static void main(String[] args) throws Exception {
+		
+		//Variables && Scanners
 		int option=0;
 		String fname="default";
 		String sFile="";
@@ -32,7 +34,7 @@ public class Runner {
 				
 				//Parser object to pass the input of sFile to be passed through the Parser, it is then used as a paramater in creating the image.
 				Parser p = new Parser(sFile);
-				p.parse(sFile);
+				p.ignore(sFile);
 				//SETTING THE FILE NAME 
 				System.out.println("Enter the Image name :");
 				fname = s.next();
@@ -50,6 +52,7 @@ public class Runner {
 				
 				//Parser object to pass the input of sFile to be passed through the Parser, it is then used as a paramater in creating the image.
 				URLParser p = new URLParser(urlInput);
+				//p.ignore(urlInput);
 				
 				//SETTING THE FILE NAME 
 				System.out.println("Enter the Image name :");

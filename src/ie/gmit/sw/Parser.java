@@ -8,6 +8,8 @@ import java.io.FileInputStream;
 
 
 public class Parser extends IgnoreWords{	
+	
+	//Variables && Scanners
 	private HashMap<String, Integer> list = new HashMap<String, Integer>();
 	Scanner s = new Scanner(System.in);
 	
@@ -25,19 +27,23 @@ public class Parser extends IgnoreWords{
 		 * Courtesy of labratory examples.
 		 */
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-		StringBuffer sb = new StringBuffer();
+		StringBuffer sBuff = new StringBuffer();
 		
 		int j;
 		while((j = br.read()) != -1) {
-			char next = (char)j;		
-			if (next >= 'A' && next <= 'z' || next == '\''){
+			char text = (char)j;		
+			
+			if (text >= 'A' && text <= 'Z'|| text >='a' && text <= 'z' || text == '\''){
+				
 				//Delimiter to remove useless inputs from text file
 				s.useDelimiter(",|\r\n, [0-9],123...");
-				sb.append(next);
+				
+				//Adding each new string to the String Buffer
+				sBuff.append(text);
 			}
 			else {
-				String word = sb.toString().toLowerCase();
-				sb = new StringBuffer();
+				String word = sBuff.toString().toLowerCase();
+				sBuff = new StringBuffer();
 				
 				/*
 				 * As specified in the brief here is the required Frequency table,
@@ -46,18 +52,20 @@ public class Parser extends IgnoreWords{
 				 * word : displays the string
 				 * frequency : (Integer)
 				 */
-				if(!split(word) && word.length() > 0){
-					int frequency = 0;	
-					if(list.containsKey(word)){
-						frequency = list.get(word);				
+				if(!split(word) && word.length() > 0)
+				{
+					int fCount = 0;	
+					if(list.containsKey(word))
+					{
+						fCount = list.get(word);				
 					}
-					frequency++;
+					fCount++;
 					//Passign the (key, value)
-					list.put(word, frequency);
+					list.put(word, fCount);
 				}
 			}
 		}	
-		//Good practice.
+		//Good practice to close.
 		br.close();
 		setList(list);
 		return list;
@@ -67,7 +75,20 @@ public class Parser extends IgnoreWords{
 		return list;
 	}
 	
-	private void setList(HashMap<String, Integer> wordHash) {
-		this.list = wordHash;
+	private void setList(HashMap<String, Integer> wordList) {
+		this.list = wordList;
+	}
+	
+	//Running time: O(n^2)
+	public static boolean Duplicates(String[] args) {
+	    for (int i = 0; i < args.length; i++) {
+	         for (int j = 0; j < args.length; j++) {
+	              if (i == j)
+	                  break;
+	              if (args[i] == args[j])
+	                  return true;
+	            }
+	        }
+	        return false;
 	}
 }
