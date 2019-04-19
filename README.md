@@ -32,4 +32,4 @@ For my File/URL Parser i used a HashMap<String, Integer> , This allowed me to im
 * This screenshot was one of the first outputs of a Word Cloud i produced. 
 ![Screenshot](example.png)
 * Second screenshot with a few tweaks.
-![Screenshot](GitExample.png)
+![Screenshot](EXAMPLE.png)
