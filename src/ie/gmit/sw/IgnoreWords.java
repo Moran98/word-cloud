@@ -10,7 +10,7 @@ public class IgnoreWords {
 	private static ArrayList<String> ignorewords = new ArrayList<String>();
 
 	public IgnoreWords() throws Exception {
-		ignore("./ignorewords.txt"); // "ignorewords.txt" has been placed into the JRE library as the user does not enter in this file.
+		ignore("ignorewords.txt"); // "ignorewords.txt" has been placed into the JRE library as the user does not enter in this file.
 	}
 	
 	public void ignore(String FileName) throws Exception {

@@ -15,7 +15,6 @@ public class GenerateImage{
 	private Graphics graphics;
 	private Font font;
 	private Color color;
-	private int freq=0;
 	//SETTING HEIGHT AND WIDTH TO FINAL WILL RESTRICT THEIR SIZES
 	private int HEIGHT = 0;
 	private int WIDTH = 0;
@@ -42,7 +41,7 @@ public class GenerateImage{
 	
 	public int paint(String word, int nItems, int w, int h) {
 		
-		int size = (int)(Math.log(nItems)*30);
+		int size = (int)(Math.log(nItems)*31);
 		Font font = new Font(Font.MONOSPACED, Font.BOLD, size);
 		graphics.setFont(font);
 		FontMetrics fontMet = graphics.getFontMetrics(font);
@@ -73,7 +72,7 @@ public class GenerateImage{
 		for (int i = 0; i < nWords; i++) {
 			
 			int j=0;
-			int count=0;
+			int numIter=0;
 			
 			/*
 			 * Noticing the larger the number entered for nWords ,
@@ -100,18 +99,18 @@ public class GenerateImage{
 					graphics.setColor(color);
 									
 					// words are then moved on the WIDTH(x) coordinate and the counter resets
-					count++;
-					if(count >= nWords){
+					numIter++;
+					
+					if(numIter >= nWords){
 						WIDTH+=250;
 						HEIGHT=0;
-						count = 0;
+						numIter = 0;
 					}
 				}
 			}
+			graphics.dispose();
 			ImageIO.write(img, "png", new File(outFile));
 			
 		}
-		
-		
 	}
 }
