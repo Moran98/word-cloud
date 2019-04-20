@@ -42,4 +42,4 @@ Similar to the Parser it would add and compare String values to the String Buffe
 
 * This screenshot was one of the first outputs of a Word Cloud i produced. 
 ![Screenshot](example.png)
-![Screenshot](EXAMPLE.png)
+![Screenshot](Github.png)
