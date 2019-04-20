@@ -12,7 +12,6 @@ public class URLParser extends IgnoreWords {
 private HashMap<String, Integer> list = new HashMap<String, Integer>();
 	
 	public URLParser(URL file) throws Exception {
-		super();
 		stream(file);
 	}
 	
@@ -28,18 +27,20 @@ private HashMap<String, Integer> list = new HashMap<String, Integer>();
 			BufferedReader br = new BufferedReader(new InputStreamReader(file.openStream()));
 			StringBuffer sBuff = new StringBuffer();
 			
-			String nextLine;
+			int nextLine;
 			int j = 0;
-			while((nextLine = br.readLine()) != null)
+			
+			while((nextLine = br.read()) != -1)
 			{
-				char text= (Character) null;
+				char text= (char)nextLine;
 				
 				if (text >= 'A' && text <= 'Z'|| text>='a' && text <= 'z' || text == '\'')
 				{
 					sBuff.append(text);
 				}
 				else {
-					String word = sBuff.toString().toLowerCase();
+					
+					String word = sBuff.toString().toUpperCase();
 					sBuff = new StringBuffer();
 					
 					// This will add words and how often they occur to the hashMap, which can then be called by other classes
@@ -70,6 +71,5 @@ private HashMap<String, Integer> list = new HashMap<String, Integer>();
 	private void setMap(HashMap<String, Integer> wordList) {
 		this.list = wordList;
 	}
-
 
 }

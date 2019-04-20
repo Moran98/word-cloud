@@ -14,8 +14,6 @@ public class Parser extends IgnoreWords{
 	Scanner s = new Scanner(System.in);
 	
 	public Parser(String file) throws Exception {
-		//Calling super() which allows us to access Super class members, e.g Split()
-		//super();
 		stream(file);
 	}
 	
@@ -28,10 +26,11 @@ public class Parser extends IgnoreWords{
 		 */
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 		StringBuffer sBuff = new StringBuffer();
+		int next;
 		
-		int j;
-		while((j = br.read()) != -1) {
-			char text = (char)j;		
+		while((next = br.read()) != -1) {
+			
+			char text = (char)next;		
 			
 			if (text >= 'A' && text <= 'Z'|| text >='a' && text <= 'z' || text == '\''){
 				
