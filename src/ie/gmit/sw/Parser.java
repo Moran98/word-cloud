@@ -24,8 +24,12 @@ public class Parser extends IgnoreWords{
 		 * StringBuffer allows us to append/add each string value to the HashMap.
 		 * Courtesy of labratory examples.
 		 */
+		
+	try {
+			
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 		StringBuffer sBuff = new StringBuffer();
+		
 		int next;
 		
 		while((next = br.read()) != -1) {
@@ -59,7 +63,7 @@ public class Parser extends IgnoreWords{
 						fCount = list.get(word);				
 					}
 					fCount++;
-					//Passign the (key, value)
+					//Passing the (key, value)
 					list.put(word, fCount);
 				}
 			}
@@ -67,7 +71,22 @@ public class Parser extends IgnoreWords{
 		//Good practice to close.
 		br.close();
 		setList(list);
+	}
+	
+		catch (Exception e) {
+			System.out.println("Invalid file path entered.");
+		}
 		return list;
+		
+		/*
+		 * This code is a DEBUG for displaying the contents of the TEXT FILE input
+		 * 
+		 * String next;
+		   while ((next= br.readLine()) != null) {
+		   System.out.println(next);
+		   }
+		   br.close();
+		 */
 	}
 	
 	public HashMap<String, Integer> getList() {

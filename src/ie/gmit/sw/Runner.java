@@ -35,6 +35,7 @@ public class Runner {
 				//Parser object to pass the input of sFile to be passed through the Parser, it is then used as a paramater in creating the image.
 				Parser p = new Parser(sFile);
 				p.ignore(sFile);
+				
 				//SETTING THE FILE NAME 
 				System.out.println("Enter the Image name :");
 				fname = s.next();
@@ -51,16 +52,19 @@ public class Runner {
 				URL urlInput = new URL(url);
 				
 				//Parser object to pass the input of sFile to be passed through the Parser, it is then used as a paramater in creating the image.
-				URLParser p = new URLParser(urlInput);
-				//p.ignore(urlInput);
+				URLParser u = new URLParser(urlInput);
+				u.ignore(url);
 				
 				//SETTING THE FILE NAME 
 				System.out.println("Enter the Image name :");
 				fname = s.next();
+				
 				//SETTING THE AMOUNT OF WORD ITERATIONS
 				System.out.println("Enter number of words : ");
 				numWords = s.nextInt();
-				GenerateImage urlFile = new GenerateImage(url, fname+".png", numWords);
+				
+				//IMAGE I/O
+				GenerateImage urlFile = new GenerateImage(urlInput, fname+".png", numWords);
 			}
 			else if(option == -1)
 			{

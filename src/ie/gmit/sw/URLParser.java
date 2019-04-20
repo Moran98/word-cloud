@@ -3,47 +3,50 @@ package ie.gmit.sw;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Scanner;
+
 
 public class URLParser extends IgnoreWords {
 	
+
 private HashMap<String, Integer> list = new HashMap<String, Integer>();
-	
+
 	public URLParser(URL file) throws Exception {
 		stream(file);
 	}
-	
-	public HashMap<String, Integer> stream(URL file) throws IOException{
 		
-		/*
-		 * Using a BufferedReader to stream in the text from the files,
-		 * Courtesy of laboratory examples.
-		 */
 		
-		try {
+		public HashMap<String, Integer> stream(URL file) throws IOException
+		{
 			
+		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(file.openStream()));
 			StringBuffer sBuff = new StringBuffer();
 			
-			int nextLine;
-			int j = 0;
-			
-			while((nextLine = br.read()) != -1)
-			{
-				char text= (char)nextLine;
+			int next;
+			while ((next= br.read()) != -1) {
+				//DEBUG System.out.println(next);
 				
+				char text = (char)next;
+				
+
 				if (text >= 'A' && text <= 'Z'|| text>='a' && text <= 'z' || text == '\'')
 				{
 					sBuff.append(text);
 				}
 				else {
-					
 					String word = sBuff.toString().toUpperCase();
 					sBuff = new StringBuffer();
-					
-					// This will add words and how often they occur to the hashMap, which can then be called by other classes
+	
+					/*
+					 * As specified in the brief here is the required Frequency table,
+					 * String is passed in and the increment of Frequency counts its occurrences.
+					 * (word, frequency) 
+					 * word : displays the string
+					 * frequency : (Integer)
+					 */
 					if(!split(word) && word.length() > 0)
 					{
 						int fCount = 0;	
@@ -52,24 +55,39 @@ private HashMap<String, Integer> list = new HashMap<String, Integer>();
 							fCount = list.get(word);				
 						}
 						fCount++;
+						//Passing the (key, value)
 						list.put(word, fCount);
 					}
 				}
-			}	
+				
+				/*
+				 * This code is a DEBUG for displaying the contents of the URL input
+				 * 
+				 * String next;
+				   while ((next= br.readLine()) != null) {
+				   System.out.println(next);
+				   }
+				   br.close();
+				 */
+				
+			}
+			
+				
 			br.close();
 			setMap(list);
-		
 			
-		} catch (MalformedURLException e) {
-			System.out.println("Invalid URL entered.");
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Invalid URL");
 		}
-		return list;		
-		
-		
-	}
+		return list;
 	
-	private void setMap(HashMap<String, Integer> wordList) {
-		this.list = wordList;
-	}
+		}
+		
+		private void setMap(HashMap<String, Integer> wordList) {
+			this.list = wordList;
+		}
+
 
 }
