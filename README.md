@@ -11,11 +11,11 @@ For this project we had to create a visual representation of text using the user
 ## Acknowledgments
 * Oracle.
 * Java 8 doc's.
-* Data Structures and Algorithms Lab Classes.
+* Data Structures and Algorithms Lab Classes (HashMaps, ArrayLists).
 * StackOverflow when facing issues.
 
 ## Running the Jar File
-The JAR file has been created in the BIN location of the project. 
+The JAR file was created in the BIN location of the project and is now able to be unZipped from the Deploy folder. 
 To run the JAR file on CMD/XTerm use the following commands :
 ```
 java –cp ./wordcloud.jar ie.gmit.sw.Runner
@@ -28,13 +28,14 @@ Whichever file type selection they chose would then direct them towards deciding
 ## Parser
 For my File/URL Parser i used a HashMap<String, Integer> , This allowed me to implement the Frequency table later in the method which was a requirement in the brief of the project. The method would stream in the text file directory that had been entered and read through each String variable in the file and append it to the StringBuffer.
 
+## Running Times
+I added a nanoTime() method into both the Text File and URL parser which tracked their completion times. At first it was running at quit fast speeds but as the code had to be changed in specific areas to meet a somewhat nice output this slowed down the running time. 
+
 ## Generate Image
+Compliments to the code attached to the brief on Image I/O and the Java Docs i was able to complete this relitively smoothly with using methods for color generation and drawing the Strings(words) to the image output in different colors and sizes.
 
 ## Ignore Words
-This file contained the hard coded file of "ignorewords.txt" which would remove any containing words in the file entered by the user. 
-Similar to the Parser it would add and compare String values to the String Buffer. Both the File and URL parser classes extended the IgnoreWords file.
-
-
+This file contained the hard coded file of "ignorewords.txt" which would remove any containing words in the directory entered by the user. Similar to the Parser it would add and compare String values to the String Buffer adding any "ignorewords" to its Array List. Both the File and URL parser classes extended the IgnoreWords file.
 
 
 ## Image IO Examples
