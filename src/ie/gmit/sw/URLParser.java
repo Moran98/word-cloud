@@ -16,7 +16,7 @@ public class URLParser extends IgnoreWords {
 	private static char WORD;
 	private static String words;
 	private static int fCount = 0;
-	private static int next;
+	private static int start;
 	private BufferedReader br;
 	private StringBuffer sBuff;
 	private NumberFormat format;
@@ -42,10 +42,10 @@ public class URLParser extends IgnoreWords {
 			br = new BufferedReader(new InputStreamReader(file.openStream()));
 			sBuff = new StringBuffer();
 			
-			while ((next= br.read()) != -1) {
+			while ((start= br.read()) != -1) {
 				//DEBUG System.out.println(next);
 				
-				WORD = (char)next;
+				WORD = (char)start;
 				
 
 				if (WORD >= 'A' && WORD <= 'Z'|| WORD>='a' && WORD <= 'z' || WORD == '\'')

@@ -42,7 +42,7 @@ public class GenerateImage{
 	
 	public int paint(String word, int nItems, int w, int h) {
 		
-		int size = (int)(Math.log(nItems)*31);
+		int size = (int)(Math.log(nItems)*7);
 		Font font = new Font(Font.MONOSPACED, Font.BOLD, size);
 		graphics.setFont(font);
 		FontMetrics fontMet = graphics.getFontMetrics(font);
@@ -61,13 +61,13 @@ public class GenerateImage{
 		//
 		//
 		//1600x1024 sets out resolution for the image output giving us a clear broad image
-		img = new BufferedImage(1600, 1024, BufferedImage.TYPE_4BYTE_ABGR);
+		img = new BufferedImage(1440, 600, BufferedImage.TYPE_4BYTE_ABGR);
 		graphics = img.getGraphics();
 		
 		
 		//Setting default background to WHITE
 		graphics.setColor(Color.black);
-		graphics.fillRect(1,2, 1600, 1024);
+		graphics.fillRect(1,2, 1440, 600);
 		
 				
 		for (int i = 0; i < nWords; i++) {
@@ -104,7 +104,7 @@ public class GenerateImage{
 					
 					if(numIter >= nWords){
 						WIDTH+=250;
-						HEIGHT=0;
+						HEIGHT=25;
 						numIter = 0;
 					}
 				}
