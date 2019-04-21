@@ -17,10 +17,10 @@ public class IgnoreWords {
 		
 		/*
 		 * Using a BufferedReader to stream in the text from the files,
-		 * Courtesy of labratory examples.
+		 * Courtesy of laboratory examples.
 		 */
  		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(FileName)));
- 		StringBuffer sb = new StringBuffer();
+ 		StringBuffer StringB = new StringBuffer();
  		
  		int i;
  		while((i = br.read()) != -1)
@@ -28,11 +28,12 @@ public class IgnoreWords {
  			char next = (char) i;
  			
  			if(next != '\n')
- 				sb.append(next);
+ 				StringB.append(next);
  			
  			else{
- 				String ignore = sb.toString().toUpperCase();
- 				sb = new StringBuffer();
+ 				//Here we are adding any Strings that are in "ignorewords" to the ignorewords Arraylist
+ 				String ignore = StringB.toString().toUpperCase();
+ 				StringB = new StringBuffer();
  				ignorewords.add(ignore);
  			}
  		}

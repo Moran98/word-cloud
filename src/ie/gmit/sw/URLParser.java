@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -16,10 +18,19 @@ private HashMap<String, Integer> list = new HashMap<String, Integer>();
 	public URLParser(URL file) throws Exception {
 		stream(file);
 	}
-		
+	
+	/*
+	 * Running Times : 19.843503s
+	 * (Parsing and creatinng Image)
+	 * Executed much faster until changes had to be made.
+	 */
 		
 		public HashMap<String, Integer> stream(URL file) throws IOException
 		{
+			
+		//Start of running time
+		float startTime = System.nanoTime();
+			
 			
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(file.openStream()));
@@ -71,6 +82,18 @@ private HashMap<String, Integer> list = new HashMap<String, Integer>();
 				 */
 				
 			}
+			
+			//Finish
+			float endTime = System.nanoTime();
+			
+			final float duration = System.nanoTime() - startTime;
+			NumberFormat format = new DecimalFormat("#0.00000");
+			
+			// DEBUG
+			// EXECUTION TIME IN nanoTime()
+			// Dividing by 1,000,000,000 displays the output in seconds
+			//System.out.println(duration/1000000000);
+			System.out.println("Execution time is : " +(duration/1000000000) +" seconds");
 			
 				
 			br.close();

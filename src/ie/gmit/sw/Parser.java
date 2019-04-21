@@ -1,6 +1,8 @@
 package ie.gmit.sw;
 
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.io.BufferedReader;
@@ -12,6 +14,12 @@ public class Parser extends IgnoreWords{
 	//Variables && Scanners
 	private HashMap<String, Integer> list = new HashMap<String, Integer>();
 	Scanner s = new Scanner(System.in);
+	
+	/*
+	 * Running times : 17.497587s
+	 * (Parsing and creating the image)
+	 *  
+	 */
 	
 	public Parser(String file) throws Exception {
 		stream(file);
@@ -25,10 +33,13 @@ public class Parser extends IgnoreWords{
 		 * Courtesy of labratory examples.
 		 */
 		
+	//Start
+	float startTime = System.nanoTime();
+		
 	try {
 			
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-		StringBuffer sBuff = new StringBuffer();
+		StringBuffer StringB = new StringBuffer();
 		
 		int next;
 		
@@ -42,11 +53,11 @@ public class Parser extends IgnoreWords{
 				s.useDelimiter(",|\r\n, [0-9],123...");
 				
 				//Adding each new string to the String Buffer
-				sBuff.append(text);
+				StringB.append(text);
 			}
 			else {
-				String word = sBuff.toString().toUpperCase();
-				sBuff = new StringBuffer();
+				String word = StringB.toString().toUpperCase();
+				StringB = new StringBuffer();
 				
 				/*
 				 * As specified in the brief here is the required Frequency table,
@@ -68,6 +79,19 @@ public class Parser extends IgnoreWords{
 				}
 			}
 		}	
+		
+		//Finish
+		float endTime = System.nanoTime();
+		
+		final float duration = System.nanoTime() - startTime;
+		NumberFormat format = new DecimalFormat("#0.00000");
+		
+		// DEBUG
+		// EXECUTION TIME IN nanoTime()
+		// Dividing by 1,000,000,000 displays the output in seconds
+		//System.out.println(duration/1000000000);
+		System.out.println("Execution time is : " +(duration/1000000000) +" seconds");
+		
 		//Good practice to close.
 		br.close();
 		setList(list);
