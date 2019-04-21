@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class IgnoreWords {
 	
 	private static ArrayList<String> ignorewords = new ArrayList<String>();
+	private static char NextWord;
 
 	public IgnoreWords() throws Exception {
 		ignore("./ignorewords.txt"); // "ignorewords.txt" has been placed into the JRE library as the user does not enter in this file.
@@ -23,12 +24,13 @@ public class IgnoreWords {
  		StringBuffer StringB = new StringBuffer();
  		
  		int i;
+ 		
  		while((i = br.read()) != -1)
  		{
- 			char next = (char) i;
+ 			NextWord = (char) i;
  			
- 			if(next != '\n')
- 				StringB.append(next);
+ 			if(NextWord != '\n')
+ 				StringB.append(NextWord);
  			
  			else{
  				//Here we are adding any Strings that are in "ignorewords" to the ignorewords Arraylist

@@ -13,6 +13,13 @@ public class Parser extends IgnoreWords{
 	
 	//Variables && Scanners
 	private HashMap<String, Integer> list = new HashMap<String, Integer>();
+	private static char WORD;
+	private static String words;
+	private static int next;
+	private static int fCount = 0;	
+	private static BufferedReader br;
+	private static StringBuffer StringB;
+	private static NumberFormat format;
 	Scanner s = new Scanner(System.in);
 	
 	/*
@@ -38,25 +45,23 @@ public class Parser extends IgnoreWords{
 		
 	try {
 			
-		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-		StringBuffer StringB = new StringBuffer();
-		
-		int next;
+		br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+		StringB = new StringBuffer();
 		
 		while((next = br.read()) != -1) {
 			
-			char text = (char)next;		
+			WORD = (char)next;		
 			
-			if (text >= 'A' && text <= 'Z'|| text >='a' && text <= 'z' || text == '\''){
+			if (WORD >= 'A' && WORD <= 'Z'|| WORD >='a' && WORD <= 'z' || WORD == '\''){
 				
 				//Delimiter to remove useless inputs from text file
 				s.useDelimiter(",|\r\n, [0-9],123...");
 				
 				//Adding each new string to the String Buffer
-				StringB.append(text);
+				StringB.append(WORD);
 			}
 			else {
-				String word = StringB.toString().toUpperCase();
+				words = StringB.toString().toUpperCase();
 				StringB = new StringBuffer();
 				
 				/*
@@ -66,16 +71,15 @@ public class Parser extends IgnoreWords{
 				 * word : displays the string
 				 * frequency : (Integer)
 				 */
-				if(!split(word) && word.length() > 0)
+				if(!split(words) && words.length() > 0)
 				{
-					int fCount = 0;	
-					if(list.containsKey(word))
+					if(list.containsKey(words))
 					{
-						fCount = list.get(word);				
+						fCount = list.get(words);				
 					}
 					fCount++;
 					//Passing the (key, value)
-					list.put(word, fCount);
+					list.put(words, fCount);
 				}
 			}
 		}	
@@ -84,7 +88,7 @@ public class Parser extends IgnoreWords{
 		float endTime = System.nanoTime();
 		
 		final float duration = System.nanoTime() - startTime;
-		NumberFormat format = new DecimalFormat("#0.00000");
+		format = new DecimalFormat("#0.00000");
 		
 		// DEBUG
 		// EXECUTION TIME IN nanoTime()
@@ -121,16 +125,4 @@ public class Parser extends IgnoreWords{
 		this.list = wordList;
 	}
 	
-	//Running time: O(n^2)
-	public static boolean Duplicates(String[] args) {
-	    for (int i = 0; i < args.length; i++) {
-	         for (int j = 0; j < args.length; j++) {
-	              if (i == j)
-	                  break;
-	              if (args[i] == args[j])
-	                  return true;
-	            }
-	        }
-	        return false;
-	}
 }

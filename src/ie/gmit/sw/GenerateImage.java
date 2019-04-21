@@ -10,7 +10,8 @@ import java.util.Random;
 
 public class GenerateImage{  
 	
-	private Parser p; // This will allow us to get the wordHash with all of our filtered words.
+	//Creating objects for TXT and URL parsers;
+	private Parser p;
 	private URLParser u;
 	private Graphics graphics;
 	private Font font;

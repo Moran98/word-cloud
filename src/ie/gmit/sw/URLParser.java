@@ -12,9 +12,15 @@ import java.util.Scanner;
 
 public class URLParser extends IgnoreWords {
 	
-
-private HashMap<String, Integer> list = new HashMap<String, Integer>();
-
+	private HashMap<String, Integer> list = new HashMap<String, Integer>();
+	private static char WORD;
+	private static String words;
+	private static int fCount = 0;
+	private static int next;
+	private BufferedReader br;
+	private StringBuffer sBuff;
+	private NumberFormat format;
+	
 	public URLParser(URL file) throws Exception {
 		stream(file);
 	}
@@ -33,22 +39,21 @@ private HashMap<String, Integer> list = new HashMap<String, Integer>();
 			
 			
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(file.openStream()));
-			StringBuffer sBuff = new StringBuffer();
+			br = new BufferedReader(new InputStreamReader(file.openStream()));
+			sBuff = new StringBuffer();
 			
-			int next;
 			while ((next= br.read()) != -1) {
 				//DEBUG System.out.println(next);
 				
-				char text = (char)next;
+				WORD = (char)next;
 				
 
-				if (text >= 'A' && text <= 'Z'|| text>='a' && text <= 'z' || text == '\'')
+				if (WORD >= 'A' && WORD <= 'Z'|| WORD>='a' && WORD <= 'z' || WORD == '\'')
 				{
-					sBuff.append(text);
+					sBuff.append(WORD);
 				}
 				else {
-					String word = sBuff.toString().toUpperCase();
+					words = sBuff.toString().toUpperCase();
 					sBuff = new StringBuffer();
 	
 					/*
@@ -58,16 +63,15 @@ private HashMap<String, Integer> list = new HashMap<String, Integer>();
 					 * word : displays the string
 					 * frequency : (Integer)
 					 */
-					if(!split(word) && word.length() > 0)
+					if(!split(words) && words.length() > 0)
 					{
-						int fCount = 0;	
-						if(list.containsKey(word))
+						if(list.containsKey(words))
 						{
-							fCount = list.get(word);				
+							fCount = list.get(words);				
 						}
 						fCount++;
 						//Passing the (key, value)
-						list.put(word, fCount);
+						list.put(words, fCount);
 					}
 				}
 				
@@ -87,7 +91,7 @@ private HashMap<String, Integer> list = new HashMap<String, Integer>();
 			float endTime = System.nanoTime();
 			
 			final float duration = System.nanoTime() - startTime;
-			NumberFormat format = new DecimalFormat("#0.00000");
+			format = new DecimalFormat("#0.00000");
 			
 			// DEBUG
 			// EXECUTION TIME IN nanoTime()
